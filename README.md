@@ -53,8 +53,6 @@ Claude: Searching your mail, then your calendar.
 | 9 | [Troubleshooting](#9-troubleshooting-) | When something breaks |
 | 10 | [FAQ](#10-faq-) | Start here if you are new |
 
----
-
 ## 1. What you can ask it 💬
 
 - What did I agree to with the agency, and is it in the calendar?
@@ -67,8 +65,6 @@ Claude: Searching your mail, then your calendar.
 - What is on my calendar next week that I could move?
 
 The first one is the point. It reads mail and calendar together, which no single Google product does for you.
-
----
 
 ## 2. Quick install ⚡
 
@@ -89,8 +85,6 @@ brew install googleworkspace/tap/gws
 # or download a binary
 # https://github.com/googleworkspace/cli/releases
 ```
-
----
 
 ## 3. Setup 🔑
 
@@ -122,8 +116,6 @@ gws auth logout
 ```
 
 Or remove access at [myaccount.google.com/permissions](https://myaccount.google.com/permissions).
-
----
 
 ## 4. Connect your client 🔌
 
@@ -211,8 +203,6 @@ args = ["-y", "@thenavidm/google-workspace-mcp@latest"]
 
 Any stdio MCP client takes the same two things: the command `npx` and those arguments.
 
----
-
 ## 5. Check it worked 🩺
 
 ```bash
@@ -220,8 +210,6 @@ npx -y @thenavidm/google-workspace-mcp doctor
 ```
 
 It checks the CLI is present, that you are authenticated, and makes one live API call. If every line is fine, restart your client and ask it `what is on my calendar today`.
-
----
 
 ## 6. Tools 🛠️
 
@@ -274,8 +262,6 @@ It checks the CLI is present, that you are authenticated, and makes one live API
 
 Read the schema before using `workspace_raw`, rather than guessing field names.
 
----
-
 ## 7. Running it on a server 🖥️
 
 Needed for claude.ai, and useful if you want it always on.
@@ -303,8 +289,6 @@ The config mount must be read-write: `gws` stores its encryption key and cached 
 > **Note**
 > On macOS the credential lives in the OS keyring, so copying `~/.config/gws` to a Linux box does not work. Set `GOOGLE_WORKSPACE_CLI_KEYRING_BACKEND=file` and authenticate on the server itself.
 
----
-
 ## 8. Safety 🛡️
 
 **Email is drafted, never sent silently.** `gmail_create_draft` writes to Drafts and stops. Sending is a separate tool needing `confirm: true`, because a sent email cannot be recalled.
@@ -324,8 +308,6 @@ GWS_SERVICES=drive,calendar      # nothing else is even registered
 
 Full detail in [SECURITY.md](./SECURITY.md).
 
----
-
 ## 9. Troubleshooting 🔧
 
 Run `doctor` first. It answers most of it.
@@ -339,8 +321,6 @@ Run `doctor` first. It answers most of it.
 | A tool says the service is disabled | `GWS_SERVICES` is set and does not include it |
 | `--http` refuses to start | `GWS_MCP_TOKEN` is not set. That is deliberate |
 | claude.ai cannot see it | it needs a public HTTPS URL, see [section 7](#7-running-it-on-a-server-) |
-
----
 
 ## 10. FAQ ❓
 
@@ -429,8 +409,6 @@ It refreshes itself. The CLI holds a refresh token and renews access silently, s
 If you ever do need to sign in again, `doctor` says so plainly rather than failing with a permissions error.
 
 </details>
-
----
 
 ## Questions
 
