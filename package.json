@@ -18,8 +18,8 @@
   "keywords": ["mcp","model-context-protocol","google-workspace","gmail","google-drive","claude","claude-code","ai-agents"],
   "author": { "name": "Navid Moazzez", "url": "https://navid.me" },
   "license": "MIT",
-  "repository": { "type": "git", "url": "git+https://github.com/thenavidm/google-workspace-mcp.git" },
-  "homepage": "https://github.com/thenavidm/google-workspace-mcp",
+  "repository": { "type": "git", "url": "git+https://github.com/navidmoazzez/google-workspace-mcp.git" },
+  "homepage": "https://github.com/navidmoazzez/google-workspace-mcp",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.30.0",
     "zod": "^4.5.4",

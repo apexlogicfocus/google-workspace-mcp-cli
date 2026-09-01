@@ -272,7 +272,7 @@ Read the schema before using `workspace_raw`, rather than guessing field names.
 Needed for claude.ai, and useful if you want it always on.
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/thenavidm/google-workspace-mcp/main/deploy/install.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/navidmoazzez/google-workspace-mcp/main/deploy/install.sh | sudo bash
 ```
 
 That creates a dedicated user, installs the `gws` binary with its checksum verified, generates a bearer token, and runs a systemd service bound to `127.0.0.1:8787`. Nothing is exposed to the internet by the script: put it behind your existing reverse proxy, which is where TLS belongs.
