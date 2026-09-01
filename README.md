@@ -5,7 +5,7 @@
 # Google Workspace MCP
 
 [![npm](https://img.shields.io/npm/v/@thenavidm%2Fgoogle-workspace-mcp?color=orange&label=npm)](https://www.npmjs.com/package/@thenavidm/google-workspace-mcp)
-[![Licence](https://img.shields.io/badge/licence-MIT-green)](./LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 [![YouTube](https://img.shields.io/badge/YouTube-@thenavidm-red?logo=youtube&logoColor=white)](https://youtube.com/@thenavidm?sub_confirmation=1)
 [![X](https://img.shields.io/badge/X-@thenavidm-black?logo=x)](https://x.com/thenavidm)
 
@@ -453,7 +453,7 @@ Navid Moazzez is a leading AI business strategist, and the host of the AI Creato
 
 ## Dependencies
 
-| Library | Licence | What it does |
+| Library | License | What it does |
 |---|---|---|
 | [Google Workspace CLI](https://github.com/googleworkspace/cli) | Apache-2.0 | Talks to Google, and owns the credential |
 | [MCP TypeScript SDK](https://github.com/modelcontextprotocol/typescript-sdk) | MIT | The MCP server, stdio and streamable HTTP |
