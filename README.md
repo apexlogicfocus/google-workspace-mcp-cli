@@ -4,6 +4,13 @@
 
 # Google Workspace MCP
 
+[![npm](https://img.shields.io/npm/v/@thenavidm%2Fgoogle-workspace-mcp?color=orange&label=npm)](https://www.npmjs.com/package/@thenavidm/google-workspace-mcp)
+[![Licence](https://img.shields.io/badge/licence-MIT-green)](./LICENSE)
+[![YouTube](https://img.shields.io/badge/YouTube-@thenavidm-red?logo=youtube&logoColor=white)](https://youtube.com/@thenavidm?sub_confirmation=1)
+[![X](https://img.shields.io/badge/X-@thenavidm-black?logo=x)](https://x.com/thenavidm)
+
+Google Workspace MCP server for Claude Code and AI agents. Gmail, Drive, Sheets, Docs, Slides, Calendar, Tasks, Forms and Contacts through the official Workspace CLI, so your credential never leaves your machine.
+
 Give any AI agent real access to your Google Workspace. Gmail, Drive, Docs, Sheets, Slides, Calendar, Tasks, Forms and Contacts, from Claude Code, Claude Desktop, claude.ai, Cursor, Codex, or any MCP client.
 
 Built on Google's own Workspace CLI, so this server never handles your Google credentials.
@@ -338,7 +345,7 @@ Run `doctor` first. It answers most of it.
 <details>
 <summary><b>What is an MCP server?</b></summary>
 
-A standard way to give an AI assistant real access to a tool, so it can act rather than guess. You install it once, your assistant gains a set of tools, and the same server works in Claude, Cursor, ChatGPT and anything else that speaks MCP.
+An MCP server is a standard way to give an AI assistant real access to a tool, so it can act rather than guess. You install it once, your assistant gains a set of tools, and the same server works in Claude, Cursor, ChatGPT and anything else that speaks MCP.
 
 Without one, an assistant can only talk about your email. With one, it can read it.
 
@@ -390,14 +397,14 @@ If you want none of that, run it with `GWS_READ_ONLY=1`.
 <details>
 <summary><b>Does it cost anything?</b></summary>
 
-No. The server is free and open source, Google's CLI is free, and the Workspace APIs are free at any volume a person generates.
+It costs nothing. The server is free and open source, Google's CLI is free, and the Workspace APIs are free at any volume a person generates.
 
 </details>
 
 <details>
 <summary><b>Does it work with ChatGPT, Cursor and claude.ai, or only Claude?</b></summary>
 
-Any MCP client. Claude Code, Claude Desktop, Cursor, Windsurf, VS Code, Codex CLI and Gemini CLI all run it locally.
+It works with any MCP client. Claude Code, Claude Desktop, Cursor, Windsurf, VS Code, Codex CLI and Gemini CLI all run it locally.
 
 claude.ai is the exception: it connects from Anthropic's cloud rather than your machine, so it needs the server running somewhere with a public HTTPS address. See [section 7](#7-running-it-on-a-server-).
 
@@ -422,6 +429,10 @@ If you ever do need to sign in again, `doctor` says so plainly rather than faili
 </details>
 
 ---
+
+## Questions
+
+Run into a problem or have a question? [Open an issue](https://github.com/navidmoazzez/google-workspace-mcp/issues) and I will help.
 
 ## About the author
 
