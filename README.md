@@ -11,7 +11,11 @@
 
 Google Workspace MCP server for Claude Code and AI agents. Gmail, Drive, Sheets, Docs, Slides, Calendar, Tasks, Forms and Contacts through the official Workspace CLI, so your credential never leaves your machine.
 
-Give any AI agent real access to your Google Workspace. Gmail, Drive, Docs, Sheets, Slides, Calendar, Tasks, Forms and Contacts, from Claude Code, Claude Desktop, claude.ai, Cursor, Codex, or any MCP client.
+One connection covers Gmail, Drive, Sheets, Docs, Slides, Calendar, Tasks, Forms and Contacts.
+
+It wraps Google's own Workspace CLI, so your credential is created by you and stays on your machine.
+
+That also sidesteps the security assessment a third-party OAuth app needs for mailbox and Drive access.
 
 Built on Google's own Workspace CLI, so this server never handles your Google credentials.
 

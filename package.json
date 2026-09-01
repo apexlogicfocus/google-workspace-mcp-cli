@@ -3,10 +3,19 @@
   "version": "0.1.0",
   "description": "Google Workspace MCP server for Claude Code and AI agents. Gmail, Drive, Docs, Sheets, Slides, Calendar, Tasks, Forms and Contacts through Google's own CLI.",
   "type": "module",
-  "bin": { "google-workspace-mcp": "./dist/index.js" },
+  "bin": {
+    "google-workspace-mcp": "dist/index.js"
+  },
   "main": "./dist/index.js",
-  "files": ["dist", "README.md", "SKILL.md", "LICENSE"],
-  "engines": { "node": ">=20" },
+  "files": [
+    "dist",
+    "README.md",
+    "SKILL.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
@@ -15,10 +24,25 @@
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "npm run build"
   },
-  "keywords": ["mcp","model-context-protocol","google-workspace","gmail","google-drive","claude","claude-code","ai-agents"],
-  "author": { "name": "Navid Moazzez", "url": "https://navid.me" },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "google-workspace",
+    "gmail",
+    "google-drive",
+    "claude",
+    "claude-code",
+    "ai-agents"
+  ],
+  "author": {
+    "name": "Navid Moazzez",
+    "url": "https://navid.me"
+  },
   "license": "MIT",
-  "repository": { "type": "git", "url": "git+https://github.com/navidmoazzez/google-workspace-mcp.git" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/navidmoazzez/google-workspace-mcp.git"
+  },
   "homepage": "https://github.com/navidmoazzez/google-workspace-mcp",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.30.0",
