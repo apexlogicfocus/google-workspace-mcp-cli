@@ -468,4 +468,4 @@ Not affiliated with, endorsed by, or sponsored by Google LLC. Google Workspace, 
 
 ---
 
-© 2026 NM Media. Made with ❤️ by [Navid Moazzez](https://navid.me).
+© 2026 [NM Media](https://navid.media). Made with ❤️ by [Navid Moazzez](https://navid.me).
