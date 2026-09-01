@@ -1,6 +1,4 @@
-<div align="center">
-  <img src="https://cdn.navid.media/connectors/google-workspace-icon.png" alt="Google Workspace" width="88">
-</div>
+<img src="https://cdn.navid.media/connectors/google-workspace-icon.png" alt="Google Workspace" width="88">
 
 # Google Workspace MCP
 
