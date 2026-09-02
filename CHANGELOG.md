@@ -1,4 +1,4 @@
-# Google Workspace MCP Versions
+# Google Workspace MCP changelog
 
 | Component | Version | Last Updated |
 |-----------|---------|--------------|
