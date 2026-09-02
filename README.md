@@ -24,20 +24,7 @@ Built on Google's own Workspace CLI, so this server never handles your Google cr
 
 Built by [Navid Moazzez](https://navid.me?utm_source=github&utm_medium=readme&utm_campaign=google-workspace-mcp).
 
-```
-You: what did I agree to with the agency, and is it in the calendar?
-
-Claude: Searching your mail, then your calendar.
-
-  Thread with hello@agency.com, 14 August
-  You agreed to a 6 week pilot starting 1 September, £4k, with a
-  review call at the halfway point.
-
-  Calendar: the kickoff is there for 1 September.
-  The halfway review is not. That would be 22 September.
-
-  Want me to draft the invite?
-```
+<img src="https://cdn.navid.media/repos/google-workspace-mcp.gif?v=1" alt="Claude Code using the Google Workspace MCP server" width="520">
 
 ## Contents
 
