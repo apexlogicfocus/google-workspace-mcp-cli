@@ -1,10 +1,11 @@
 {
-  "name": "@thenavidm/google-workspace-mcp",
-  "version": "0.1.0",
-  "description": "Google Workspace MCP server for Claude Code and AI agents. Gmail, Drive, Docs, Sheets, Slides, Calendar, Tasks, Forms and Contacts through Google's own CLI.",
+  "name": "@thenavidm/google-workspace-mcp-cli",
+  "version": "0.2.0",
+  "description": "Google Workspace MCP server and CLI for Claude Code, Codex and AI agents. 38 tools for Gmail, Drive, Sheets, Docs, Slides, Calendar, Tasks, Forms and Contacts through Google's official Workspace CLI, so your credential never leaves your machine.",
   "type": "module",
   "bin": {
-    "google-workspace-mcp": "dist/index.js"
+    "google-workspace-mcp": "dist/index.js",
+    "google-workspace-cli": "dist/index.js"
   },
   "main": "./dist/index.js",
   "files": [
@@ -32,7 +33,9 @@
     "google-drive",
     "claude",
     "claude-code",
-    "ai-agents"
+    "ai-agents",
+    "cli",
+    "command-line-tool"
   ],
   "author": {
     "name": "Navid Moazzez",
@@ -41,9 +44,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thenavidm/google-workspace-mcp.git"
+    "url": "git+https://github.com/thenavidm/google-workspace-mcp-cli.git"
   },
-  "homepage": "https://github.com/thenavidm/google-workspace-mcp",
+  "homepage": "https://github.com/thenavidm/google-workspace-mcp-cli",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.30.0",
     "zod": "^4.5.4",

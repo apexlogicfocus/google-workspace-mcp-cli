@@ -10,3 +10,5 @@ claude-code
 ai-agents
 typescript
 llm-tools
+cli
+command-line-tool

@@ -1,30 +1,57 @@
 <img src="https://cdn.navid.media/connectors/google-workspace-icon.png" alt="Google Workspace" width="88">
 
-# Google Workspace MCP
+# Google Workspace MCP Server & CLI
 
-[![npm](https://img.shields.io/npm/v/@thenavidm%2Fgoogle-workspace-mcp?color=orange&label=npm)](https://www.npmjs.com/package/@thenavidm/google-workspace-mcp)
+[![npm](https://img.shields.io/npm/v/@thenavidm%2Fgoogle-workspace-mcp-cli?color=orange&label=npm)](https://www.npmjs.com/package/@thenavidm/google-workspace-mcp-cli)
 [![License](https://img.shields.io/badge/License-MIT-green)](./LICENSE)
 [![YouTube](https://img.shields.io/badge/YouTube-@thenavidm-red?logo=youtube&logoColor=white)](https://youtube.com/@thenavidm?sub_confirmation=1)
 [![X](https://img.shields.io/badge/X-@thenavidm-black?logo=x)](https://x.com/thenavidm)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-thenavidm-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/in/thenavidm)
 
-Google Workspace MCP server for Claude Code and AI agents. Gmail, Drive, Sheets, Docs, Slides, Calendar, Tasks, Forms and Contacts through the official Workspace CLI, so your credential never leaves your machine.
+Google Workspace MCP server and CLI for Claude Code, Codex and AI agents. 38 tools for Gmail, Drive, Sheets, Docs, Slides, Calendar, Tasks, Forms and Contacts through Google's official Workspace CLI, so your credential never leaves your machine.
 
-One connection covers Gmail, Drive, Sheets, Docs, Slides, Calendar, Tasks, Forms and Contacts.
+One install gives you both surfaces, the same 38 tools under the same names, from the same server, so they cannot drift apart.
 
-It wraps Google's own Workspace CLI, so your credential is created by you and stays on your machine.
+It wraps Google's own Workspace CLI, so your credential is created by you and stays on your machine. That also sidesteps the security assessment a third-party OAuth app needs for mailbox and Drive access.
 
-That also sidesteps the security assessment a third-party OAuth app needs for mailbox and Drive access.
-
-Built on Google's own Workspace CLI, so this server never handles your Google credentials.
-
-[![License](https://img.shields.io/badge/License-MIT-blue)](./LICENSE)
-[![YouTube](https://img.shields.io/badge/YouTube-@thenavidm-red?logo=youtube&logoColor=white)](https://youtube.com/@thenavidm?sub_confirmation=1)
-[![X](https://img.shields.io/badge/X-@thenavidm-black?logo=x)](https://x.com/thenavidm)
-
-Built by [Navid Moazzez](https://navid.me?utm_source=github&utm_medium=referral&utm_campaign=google-workspace-mcp&utm_content=readme).
+Built by [Navid Moazzez](https://navid.me?utm_source=github&utm_medium=referral&utm_campaign=google-workspace-mcp-cli&utm_content=readme).
 
 <img src="https://cdn.navid.media/repos/google-workspace-mcp.gif?v=1" alt="Claude Code using the Google Workspace MCP server" width="520">
+
+## Two ways to use it
+
+### Command line
+
+`google-workspace-cli` runs every tool as a command. Agents that run commands, like
+Claude Code, Codex and OpenCode, use it on their own, and you can type the same
+commands in a terminal, a script or a cron job:
+
+```bash
+google-workspace-cli                                          # every command, one line each
+google-workspace-cli gmail-search --q "from:sarah newer_than:30d" --max 5
+google-workspace-cli calendar-list-events --json
+google-workspace-cli drive-search --q "name contains 'invoice'" --agent
+google-workspace-cli gmail-create-draft --to a@example.com --subject Hi --body "See you Friday"
+google-workspace-cli gmail-send-draft --draftId r-123 --confirm
+google-workspace-cli <command> --help                         # what any command takes
+```
+
+`--confirm` is the shell spelling of the confirmation sending a draft needs. `--json` gives JSON, `--compact` puts it on one line, `--select` keeps only the fields you name, and `--agent` turns on all of it for a script. Exit codes are 0 ok, 2 usage or a refused write, 3 not found, 4 auth, 5 API, 7 rate limited and 10 nothing configured, so a script branches on the number.
+
+`google-workspace-cli schema <command>` prints the exact JSON Schema an MCP client
+receives for that tool.
+
+### MCP server, for AI agents
+
+`google-workspace-mcp` is what Claude Code, Claude Desktop, Cursor and the rest launch.
+You never run it by hand:
+
+```bash
+claude mcp add google-workspace -- npx -y @thenavidm/google-workspace-mcp-cli
+```
+
+In Claude Desktop, the [`.mcpb` extension](https://github.com/thenavidm/google-workspace-mcp-cli/releases/latest)
+installs on a double click. Section 4 has every other client.
 
 ## Contents
 
@@ -59,10 +86,17 @@ The first one is the point. It reads mail and calendar together, which no single
 Node 20 or newer. Nothing else.
 
 ```bash
-npx -y @thenavidm/google-workspace-mcp --version
+npx -y @thenavidm/google-workspace-mcp-cli --version
 ```
 
 That is the whole install. `npx` fetches it on demand, so there is nothing to update later.
+
+For the CLI as a command you or your agent can run anywhere, install it once:
+
+```bash
+npm install -g @thenavidm/google-workspace-mcp-cli
+google-workspace-cli
+```
 
 You also need Google's Workspace CLI, which is what actually talks to Google:
 
@@ -110,12 +144,18 @@ Or remove access at [myaccount.google.com/permissions](https://myaccount.google.
 ### Claude Code
 
 ```bash
-claude mcp add google-workspace -- npx -y @thenavidm/google-workspace-mcp@latest
+claude mcp add google-workspace -- npx -y @thenavidm/google-workspace-mcp-cli@latest
 ```
 
 `--scope user` makes it available in every project rather than the current one.
 
 ### Claude Desktop
+
+The short way: download the [`.mcpb` extension](https://github.com/thenavidm/google-workspace-mcp-cli/releases/latest)
+from the latest release and double-click it. It carries its own dependencies,
+so there is no config file to edit and nothing to install first. Install and sign in to gws first (section 3), because the extension talks to Google through it.
+
+The long way, if you would rather edit the config yourself:
 
 | Platform | Config path |
 |---|---|
@@ -127,7 +167,7 @@ claude mcp add google-workspace -- npx -y @thenavidm/google-workspace-mcp@latest
   "mcpServers": {
     "google-workspace": {
       "command": "npx",
-      "args": ["-y", "@thenavidm/google-workspace-mcp@latest"]
+      "args": ["-y", "@thenavidm/google-workspace-mcp-cli@latest"]
     }
   }
 }
@@ -151,7 +191,7 @@ claude.ai runs connectors from Anthropic's cloud, not from your machine, so it c
   "mcpServers": {
     "google-workspace": {
       "command": "npx",
-      "args": ["-y", "@thenavidm/google-workspace-mcp@latest"]
+      "args": ["-y", "@thenavidm/google-workspace-mcp-cli@latest"]
     }
   }
 }
@@ -171,7 +211,7 @@ claude.ai runs connectors from Anthropic's cloud, not from your machine, so it c
     "google-workspace": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "@thenavidm/google-workspace-mcp@latest"]
+      "args": ["-y", "@thenavidm/google-workspace-mcp-cli@latest"]
     }
   }
 }
@@ -184,7 +224,7 @@ claude.ai runs connectors from Anthropic's cloud, not from your machine, so it c
 ```toml
 [mcp_servers.google-workspace]
 command = "npx"
-args = ["-y", "@thenavidm/google-workspace-mcp@latest"]
+args = ["-y", "@thenavidm/google-workspace-mcp-cli@latest"]
 ```
 
 ### Everything else
@@ -194,7 +234,7 @@ Any stdio MCP client takes the same two things: the command `npx` and those argu
 ## 5. Check it worked 🩺
 
 ```bash
-npx -y @thenavidm/google-workspace-mcp doctor
+npx -y @thenavidm/google-workspace-mcp-cli doctor
 ```
 
 It checks the CLI is present, that you are authenticated, and makes one live API call. If every line is fine, restart your client and ask it `what is on my calendar today`.
@@ -255,7 +295,7 @@ Read the schema before using `workspace_raw`, rather than guessing field names.
 Needed for claude.ai, and useful if you want it always on.
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/thenavidm/google-workspace-mcp/main/deploy/install.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/thenavidm/google-workspace-mcp-cli/main/deploy/install.sh | sudo bash
 ```
 
 That creates a dedicated user, installs the `gws` binary with its checksum verified, generates a bearer token, and runs a systemd service bound to `127.0.0.1:8787`. Nothing is exposed to the internet by the script: put it behind your existing reverse proxy, which is where TLS belongs.
@@ -318,6 +358,20 @@ Run `doctor` first. It answers most of it.
 An MCP server is a standard way to give an AI assistant real access to a tool, so it can act rather than guess. You install it once, your assistant gains a set of tools, and the same server works in Claude, Cursor, ChatGPT and anything else that speaks MCP.
 
 Without one, an assistant can only talk about your email. With one, it can read it.
+
+</details>
+
+<details>
+<summary><b>What is the CLI?</b></summary>
+
+`google-workspace-cli` is the same program as the MCP server, run as commands. AI agents that run commands, like Claude Code, Codex and OpenCode, use it on their own, and you can type the same commands in a terminal, a script or a cron job. Every tool is a command with dashes, so `gmail_search` runs as `google-workspace-cli gmail-search`.
+
+</details>
+
+<details>
+<summary><b>Should I use the MCP server or the CLI?</b></summary>
+
+Use the MCP server in an app with no terminal, like Claude Desktop's chat. Use the CLI anywhere commands run: an agent like Claude Code, Codex or OpenCode, a script or a cron job. The MCP server sends its full tool list to the model on every turn, and the CLI costs nothing until it runs.
 
 </details>
 
@@ -400,7 +454,7 @@ If you ever do need to sign in again, `doctor` says so plainly rather than faili
 
 ## Questions
 
-Run into a problem or have a question? [Open an issue](https://github.com/thenavidm/google-workspace-mcp/issues) and I will help.
+Run into a problem or have a question? [Open an issue](https://github.com/thenavidm/google-workspace-mcp-cli/issues) and I will help.
 
 ## About the author
 
@@ -408,8 +462,8 @@ Navid Moazzez is a leading AI business strategist, and the host of the AI Creato
 
 **Links**
 
-- Personal website: [navid.me](https://navid.me?utm_source=github&utm_medium=referral&utm_campaign=google-workspace-mcp&utm_content=readme)
-- Navid Media: [navid.media](https://navid.media?utm_source=github&utm_medium=referral&utm_campaign=google-workspace-mcp&utm_content=readme)
+- Personal website: [navid.me](https://navid.me?utm_source=github&utm_medium=referral&utm_campaign=google-workspace-mcp-cli&utm_content=readme)
+- Navid Media: [navid.media](https://navid.media?utm_source=github&utm_medium=referral&utm_campaign=google-workspace-mcp-cli&utm_content=readme)
 - YouTube: [@thenavidm](https://youtube.com/@thenavidm?sub_confirmation=1) and [@thenavidai](https://youtube.com/@thenavidai?sub_confirmation=1)
 - X: [@thenavidm](https://x.com/thenavidm)
 - Instagram: [@thenavidm](https://instagram.com/thenavidm)
@@ -434,4 +488,4 @@ Not affiliated with, endorsed by, or sponsored by Google LLC. Google Workspace, 
 
 ---
 
-© 2026 [NM Media](https://navid.media?utm_source=github&utm_medium=referral&utm_campaign=google-workspace-mcp&utm_content=readme). Made with ❤️ by [Navid Moazzez](https://navid.me?utm_source=github&utm_medium=referral&utm_campaign=google-workspace-mcp&utm_content=readme).
+© 2026 [NM Media](https://navid.media?utm_source=github&utm_medium=referral&utm_campaign=google-workspace-mcp-cli&utm_content=readme). Made with ❤️ by [Navid Moazzez](https://navid.me?utm_source=github&utm_medium=referral&utm_campaign=google-workspace-mcp-cli&utm_content=readme).

@@ -1,4 +1,4 @@
-# Working on google-workspace-mcp
+# Working on google-workspace-mcp-cli
 
 For agents editing this repository. Users read the README.
 

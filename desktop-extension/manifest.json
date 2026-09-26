@@ -1,0 +1,67 @@
+{
+  "manifest_version": "0.2",
+  "name": "google-workspace",
+  "display_name": "Google Workspace",
+  "version": "0.2.0",
+  "description": "Google Workspace MCP server and CLI for Claude Code, Codex and AI agents. 38 tools for Gmail, Drive, Sheets, Docs, Slides, Calendar, Tasks, Forms and Contacts through Google's official Workspace CLI, so your credential never leaves your machine.",
+  "long_description": "Connects Claude to Gmail, Drive, Sheets, Docs, Slides, Calendar, Tasks, Forms and Contacts through Google's own Workspace CLI, gws.\n\nInstall gws once (`brew install googleworkspace/tap/gws` on a Mac) and sign in with `gws auth login`. This extension never sees or stores a Google credential: gws holds it.\n\nEmail is drafted, not sent. Sending a draft refuses to run without an explicit confirmation, and Read only removes every write.",
+  "author": {
+    "name": "Navid Moazzez",
+    "url": "https://navid.me"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thenavidm/google-workspace-mcp-cli"
+  },
+  "homepage": "https://github.com/thenavidm/google-workspace-mcp-cli",
+  "documentation": "https://github.com/thenavidm/google-workspace-mcp-cli#readme",
+  "support": "https://github.com/thenavidm/google-workspace-mcp-cli/issues",
+  "license": "MIT",
+  "keywords": [
+    "google-workspace",
+    "gmail",
+    "google-drive",
+    "google-calendar",
+    "mcp"
+  ],
+  "server": {
+    "type": "node",
+    "entry_point": "server/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/server/index.js"
+      ],
+      "env": {
+        "GWS_READ_ONLY": "${user_config.read_only}",
+        "GWS_SERVICES": "${user_config.services}"
+      }
+    }
+  },
+  "user_config": {
+    "read_only": {
+      "type": "boolean",
+      "title": "Read only",
+      "description": "Refuse every write: no drafts, no edits, no events.",
+      "default": false,
+      "required": false
+    },
+    "services": {
+      "type": "string",
+      "title": "Services (optional)",
+      "description": "Limit to these services, comma separated, for example gmail,drive,calendar. Leave empty for all.",
+      "required": false
+    }
+  },
+  "compatibility": {
+    "claude_desktop": ">=0.10.0",
+    "platforms": [
+      "darwin",
+      "win32",
+      "linux"
+    ],
+    "runtimes": {
+      "node": ">=20"
+    }
+  }
+}

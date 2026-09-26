@@ -61,7 +61,7 @@ echo "==> gws $("$GWS_BIN" --version | head -1)"
 
 # ── the server ────────────────────────────────────────────────────────────────
 echo "==> installing google-workspace-mcp"
-npm install -g @thenavidm/google-workspace-mcp >/dev/null
+npm install -g @thenavidm/google-workspace-mcp-cli >/dev/null
 
 id -u "$USER_NAME" >/dev/null 2>&1 || useradd --system --home "$DATA_DIR" --shell /usr/sbin/nologin "$USER_NAME"
 install -d -m 700 -o "$USER_NAME" -g "$USER_NAME" "$DATA_DIR"

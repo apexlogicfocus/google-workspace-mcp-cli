@@ -3,6 +3,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { buildServer, serverState, VERSION } from "./server.js"
 import { startHttp } from "./transport/http.js"
 import { gws, GWS_BIN, GwsError } from "./gws.js"
+import { isCliCommand, runCli, toolNames } from "./cli.js"
 
 const argv = process.argv.slice(2)
 const has = (f: string) => argv.includes(f)
@@ -14,6 +15,8 @@ google-workspace-mcp ${VERSION}
   google-workspace-mcp                 run over stdio (Claude Code, Desktop, Cursor)
   google-workspace-mcp --http          run over HTTP (claude.ai, remote clients)
   google-workspace-mcp doctor          check the setup and say what is wrong
+  google-workspace-cli                 every tool as a shell command
+  google-workspace-cli <command> --help  what one command takes
 
 Flags
   --http                 serve streamable HTTP instead of stdio
@@ -70,7 +73,25 @@ async function doctor() {
   else console.log("HTTP:   no GWS_MCP_TOKEN, so --http will refuse to start")
 }
 
+/** Invoked as the CLI binary rather than the server one. */
+function invokedAsCli(): boolean {
+  const name = (process.argv[1] ?? "").split("/").pop() ?? ""
+  return name.startsWith("google-workspace-cli")
+}
+
 async function main() {
+  // The CLI: every tool as a command, from the same server an MCP app talks
+  // to. Checked first so `<tool> --help` reaches the tool.
+  const command = argv[0]
+  const cli =
+    command !== undefined && !command.startsWith("-") && command !== "doctor"
+      ? invokedAsCli() || isCliCommand(argv, await toolNames())
+      : invokedAsCli() && argv.length === 0
+  if (cli) {
+    process.exitCode = await runCli(argv.length ? argv : ["tools"])
+    return
+  }
+
   if (has("--help") || has("-h")) { console.log(HELP); return }
   if (has("--version")) { console.log(VERSION); return }
   if (argv[0] === "doctor") { await doctor(); return }
