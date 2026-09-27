@@ -2,9 +2,15 @@
 
 | Component | Version | Last Updated |
 |-----------|---------|--------------|
-| google-workspace-mcp-cli | 0.2.0 | 2026-09-26 |
+| google-workspace-mcp-cli | 0.2.1 | 2026-09-27 |
 
 ---
+
+## 0.2.1
+
+**A refusal says `--confirm` in a terminal.** The server words it for an AI, as `confirm: true`, and the CLI now rewrites that one phrase, so the command it asks for is the one you type. The command list only mentions `--confirm` where a tool takes it.
+
+**The README shows the context cost measured in Claude Code**: every tool loaded, Claude Code's default tool search, and the CLI's `SKILL.md`, each from 2 real runs.
 
 ## 0.2.0
 

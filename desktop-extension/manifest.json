@@ -2,7 +2,7 @@
   "manifest_version": "0.2",
   "name": "google-workspace",
   "display_name": "Google Workspace",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Google Workspace MCP server and CLI for Claude Code, Codex and AI agents. 38 tools for Gmail, Drive, Sheets, Docs, Slides, Calendar, Tasks, Forms and Contacts through Google's official Workspace CLI, so your credential never leaves your machine.",
   "long_description": "Connects Claude to Gmail, Drive, Sheets, Docs, Slides, Calendar, Tasks, Forms and Contacts through Google's own Workspace CLI, gws.\n\nInstall gws once (`brew install googleworkspace/tap/gws` on a Mac) and sign in with `gws auth login`. This extension never sees or stores a Google credential: gws holds it.\n\nEmail is drafted, not sent. Sending a draft refuses to run without an explicit confirmation, and Read only removes every write.",
   "author": {

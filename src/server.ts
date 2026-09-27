@@ -2,7 +2,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js"
 import { registerTools } from "./tools/index.js"
 import { allowedServices, isReadOnly } from "./gws.js"
 
-export const VERSION = "0.2.0"
+export const VERSION = "0.2.1"
 
 const INSTRUCTIONS = `\
 Google Workspace: Gmail, Drive, Docs, Sheets, Slides, Calendar, Tasks, Forms and

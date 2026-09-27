@@ -1,6 +1,6 @@
 {
   "name": "@thenavidm/google-workspace-mcp-cli",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Google Workspace MCP server and CLI for Claude Code, Codex and AI agents. 38 tools for Gmail, Drive, Sheets, Docs, Slides, Calendar, Tasks, Forms and Contacts through Google's official Workspace CLI, so your credential never leaves your machine.",
   "type": "module",
   "bin": {

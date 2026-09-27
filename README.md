@@ -53,6 +53,35 @@ claude mcp add google-workspace -- npx -y @thenavidm/google-workspace-mcp-cli
 In Claude Desktop, the [`.mcpb` extension](https://github.com/thenavidm/google-workspace-mcp-cli/releases/latest)
 installs on a double click. Section 4 has every other client.
 
+### What each costs
+
+Both surfaces are the same program with the same 38 tools. The
+difference is when the model pays for them. Measured in Claude Code:
+
+| | MCP server | CLI |
+|---|---|---|
+| Every message, with every tool loaded | 6,700 tokens | nothing |
+| Every message, Claude Code's default | 810 tokens | nothing |
+| When Google Workspace comes up | nothing more, or the tools it picks | 1,800 tokens for `SKILL.md`, once |
+| 20 messages with Google Workspace in 1, every tool loaded | 134,000 tokens | 1,800 tokens |
+
+Claude Code's [tool search](https://code.claude.com/docs/en/mcp#scale-with-mcp-tool-search)
+is on by default: it sends only the tool names and the server instructions,
+and loads a tool's full definition when the model reaches for it. An app that
+loads every tool up front pays the first line on every message, whether
+Google Workspace comes up or not. With the skill added, Claude Code also lists its
+one-line description, about 140 tokens.
+
+To spend less, turn the server off when you are not using it, which in Claude
+Code is the `/mcp` panel. `GWS_SERVICES=gmail,calendar` registers only the services you name, and the rest cost nothing.
+Or install the CLI and add the server on the days it earns its place.
+
+Measured on 2026-09-27 with Claude Code 2.1.257 on Claude Opus 5: one
+short prompt with and without the server connected, once with
+`ENABLE_TOOL_SEARCH=false` and once with the default, the difference read
+from the API's own usage figures. `SKILL.md` was measured the same way. Other
+apps and models count tokens a little differently.
+
 ## Contents
 
 | | Section | |
@@ -371,7 +400,7 @@ Without one, an assistant can only talk about your email. With one, it can read 
 <details>
 <summary><b>Should I use the MCP server or the CLI?</b></summary>
 
-Use the MCP server in an app with no terminal, like Claude Desktop's chat. Use the CLI anywhere commands run: an agent like Claude Code, Codex or OpenCode, a script or a cron job. The MCP server sends its full tool list to the model on every turn, and the CLI costs nothing until it runs.
+Use the MCP server in an app with no terminal, like Claude Desktop's chat. Use the CLI anywhere commands run: an agent like Claude Code, Codex or OpenCode, a script or a cron job. The MCP server's tools take up context on every message, and the CLI costs nothing until it runs.
 
 </details>
 
